@@ -1,0 +1,63 @@
+.game-price-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  height: 400px; /* Set a fixed height for the card */
+  background-color: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+.game-image {
+  width: 100%;
+  object-fit: cover;
+}
+
+.game-title {
+  text-align: center;
+  font-size: 18px;
+  margin: 10px 0;
+}
+
+.store-price-list {
+  padding: 10px;
+  flex-grow: 1; /* Allows the list to take up remaining space */
+  overflow-y: auto; /* Enable scrolling if the list exceeds the container height */
+}
+
+/* Custom scrollbar styles */
+.store-price-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.store-price-list::-webkit-scrollbar-track {
+  background: #f1f1f1; /* Scrollbar track (background) */
+  border-radius: 10px;
+}
+
+.store-price-list::-webkit-scrollbar-thumb {
+  background-color: #cacaca; /* Scrollbar thumb (the draggable part) */
+  border-radius: 10px;
+}
+
+.store-price-list::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Thumb color on hover */
+}
+
+.store-price-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  font-size: 16px;
+}
+
+.store-name {
+  font-weight: bold;
+}
+
+.price {
+  color: #4caf50;
+  font-weight: bold;
+}

@@ -13,8 +13,8 @@
   transition: transform 0.2s;
   width: 300px;
   max-height: 200px;
-  margin-bottom: 50px;
-  margin-top: 50px;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 .info-card-icon-container {
