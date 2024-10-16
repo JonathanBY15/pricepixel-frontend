@@ -53,6 +53,6 @@
   flex: 1; /* Take the remaining height */
   display: flex; /* Optional: Flexbox for centering content */
   align-items: center; /* Center items vertically */
-  justify-content: center; /* Center items horizontally */
+  justify-content: start; /* Center items horizontally */
   background-color: #f0f0f0; /* Example background color */
 }

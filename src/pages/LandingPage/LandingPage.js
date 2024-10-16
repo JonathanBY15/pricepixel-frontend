@@ -12,170 +12,211 @@ const LandingPage = () => {
         text="PricePixel" 
     />
 
+    <p>Effortlessly compare prices across multiple stores to find the best deals on your favorite games, ensuring you never pay more than you need to.</p>
+
 
     <ColoredButton
         text="Get Started"
     />
     
-    <p>Unlock the potential of your gaming budget with instant price tracking, personalized alerts, and intelligent recommendations, ensuring you never miss out on the best deals.</p>
-
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-
-
-
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
-    <div className="info-card-container">
-        <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Stay updated with real-time price changes across multiple online stores to get the best deals on your favorite games." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Wishlist Alerts" 
-        description="Set your desired price thresholds, and receive instant notifications when your games drop below your target price." 
-        // icon={aiIcon}
-        />
-        <InfoCard 
-        title="Store Comparison" 
-        description="Compare prices across different retailers to ensure you get the best deal available online." 
-        // icon={aiIcon}
-    />
-    </div>
     
+
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>
+
+
+
+
+
+
+
+
+
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
+    <div className="info-card-container">
+        <InfoCard 
+        title="Real-Time Price Tracking" 
+        description="Get instant updates on price changes across stores for the best deals." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Wishlist Alerts" 
+        description="Set price thresholds and get notified when your games drop below." 
+        // icon={aiIcon}
+        />
+        <InfoCard 
+        title="Store Comparison" 
+        description="Compare prices from various stores for the best offers." 
+        // icon={aiIcon}
+    />
+    </div>   
    
   </div>
 

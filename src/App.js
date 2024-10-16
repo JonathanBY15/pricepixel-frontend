@@ -27,7 +27,6 @@ const App = () => {
       </Routes>
     </Router>
 
-    
     <LandingPage/>
   </div>
 
