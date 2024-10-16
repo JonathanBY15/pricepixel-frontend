@@ -1,0 +1,41 @@
+/* src/components/NavBar.css */
+
+.navbar {
+  position: sticky; /* Makes the navbar sticky */
+  top: 0; /* Sticks to the top */
+  z-index: 1000; /* Ensure it is above other content */
+  background-color: #f5f5f55d;
+  /* Slightly white with opacity */
+  backdrop-filter: blur(6px);
+  padding: 10px 20px;
+  border-bottom: #0b7189 0.1px solid;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar-logo {
+  color: #0b7189;
+  text-decoration: none;
+}
+
+.navbar-menu {
+  list-style: none;
+  display: flex;
+}
+
+.navbar-menu li {
+  margin: 0 15px;
+}
+
+.navbar-link {
+  color: #0b7189;
+  text-decoration: none;
+}
+
+.navbar-link:hover {
+  text-decoration: underline;
+}

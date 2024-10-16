@@ -1,0 +1,17 @@
+/* src/components/ColoredTitle.css */
+
+.colored-title {
+  text-align: center; /* Center the title */
+  margin: 20px 0; /* Add some margin */
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #0b72893f,
+    #0b7189
+  ); /* Adjust gradient colors as needed */
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
+  font-size: 5em; /* Adjust size as needed */
+}

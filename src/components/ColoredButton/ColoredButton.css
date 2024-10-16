@@ -1,0 +1,14 @@
+.colored-button {
+  background-color: #0b7189;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  text-align: center;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.colored-button:hover {
+  background-color: #0b7289cc;
+}
