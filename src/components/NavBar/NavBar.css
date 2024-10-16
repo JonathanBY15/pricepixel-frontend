@@ -7,8 +7,8 @@
   background-color: #f5f5f55d;
   /* Slightly white with opacity */
   backdrop-filter: blur(6px);
-  padding: 10px 20px;
-  border-bottom: #0b7189 0.1px solid;
+  padding: 0 20px;
+  border-bottom: rgb(206, 210, 216) 1px solid;
 }
 
 .navbar-container {
@@ -18,8 +18,11 @@
 }
 
 .navbar-logo {
-  color: #0b7189;
+  background: linear-gradient(to right, #0b72897c, #0b7189);
+  -webkit-background-clip: text; /* For Safari */
+  -webkit-text-fill-color: transparent; /* For Safari */
   text-decoration: none;
+  cursor: pointer;
 }
 
 .navbar-menu {
