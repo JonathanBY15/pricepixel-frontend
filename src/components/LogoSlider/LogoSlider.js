@@ -2,10 +2,11 @@ import React from 'react';
 import './LogoSlider.css'; // Import the CSS for styling
 
 const logos = [
-  '/assets/origin.png', // No need to import, as it's in the public folder
-  '/assets/steam.png', // No need to import, as it's in the public folder
+  '/assets/steam-blue.png', // No need to import, as it's in the public folder
   '/assets/epic.png', // No need to import, as it's in the public folder
+  '/assets/origin.png', // No need to import, as it's in the public folder
   '/assets/ea.png', // No need to import, as it's in the public folder
+  '/assets/gog.png', // No need to import, as it's in the public folder
   '/assets/ubisoft.png', // No need to import, as it's in the public folder
   '/assets/blizzard.png', // No need to import, as it's in the public folder
 ];

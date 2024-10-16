@@ -5,16 +5,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
   border: 1px solid #ddd;
   border-radius: 8px;
   padding: 16px;
   text-align: center;
   background-color: #fdfdfd;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s;
   width: 300px;
   max-height: 200px;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 .info-card-icon-container {
@@ -25,7 +25,7 @@
   height: 40px;
   margin-bottom: 10px;
   border-radius: 50%;
-  background-color: #0b72893f;
+  background-color: #0b72892a;
 }
 
 .info-card-title {
@@ -36,7 +36,8 @@
 
 .info-card-description {
   font-size: 0.9em;
-  color: #555;
+  color: rgb(107, 114, 128);
+  font-weight: 400;
 }
 
 .info-card-icon {

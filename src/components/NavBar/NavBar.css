@@ -4,7 +4,7 @@
   position: sticky; /* Makes the navbar sticky */
   top: 0; /* Sticks to the top */
   z-index: 1000; /* Ensure it is above other content */
-  background-color: #f5f5f55d;
+  background-color: #ffffff5d;
   /* Slightly white with opacity */
   backdrop-filter: blur(6px);
   padding: 0 20px;

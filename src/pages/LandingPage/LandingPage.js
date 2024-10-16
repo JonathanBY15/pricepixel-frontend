@@ -4,6 +4,7 @@ import InfoCard from '../../components/InfoCard/InfoCard';
 import ColoredTitle from '../../components/ColoredTitle/ColoredTitle';
 import ColoredButton from '../../components/ColoredButton/ColoredButton';
 import LogoSlider from '../../components/LogoSlider/LogoSlider';
+import SubTitle from '../../components/SubTitle/SubTitle';
 import './LandingPage.css';
 
 const LandingPage = () => {
@@ -11,7 +12,7 @@ const LandingPage = () => {
   <div className="landing-page">
     <ColoredTitle text="PricePixel"/>
 
-    <p>Effortlessly compare prices across multiple stores to find the best deals on your favorite games, ensuring you never pay more than you need to.</p>
+    <SubTitle text="Your one-stop destination for tracking game prices across multiple stores."/>
 
     <ColoredButton text="Get Started"/>
 
@@ -27,7 +28,7 @@ const LandingPage = () => {
         icon={'/assets/alert.png'}
         />
         <InfoCard 
-        title="Store Comparison" 
+        title="Price Comparison" 
         description="Compare prices from various stores for the best offers." 
         icon={'/assets/price.png'}
     />
@@ -35,13 +36,6 @@ const LandingPage = () => {
 
     <LogoSlider />
 
-
-
-    
-
-
-
-   
   </div>
 
   );
