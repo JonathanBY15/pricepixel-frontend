@@ -4,3 +4,10 @@
   margin-bottom: 1rem;
   color: rgb(107, 114, 128);
 }
+
+.highlighted-text {
+  background-color: #d1fae5; /* Your secondary color or any color you'd like */
+  color: #047857;
+  padding: 2px 4px;
+  border-radius: 3px;
+}
