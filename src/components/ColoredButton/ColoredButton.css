@@ -1,3 +1,7 @@
+.colored-button-link {
+  text-decoration: none;
+}
+
 .colored-button {
   font-family: "Poppins", sans-serif;
   font-size: 1em;

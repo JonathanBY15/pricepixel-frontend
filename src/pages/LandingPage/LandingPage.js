@@ -69,7 +69,7 @@ const LandingPage = () => {
   <div className="landing-page">
     <ColoredTitle text="PricePixel"/>
 
-    <SubTitle text="Your one-stop destination for tracking game prices across multiple stores."/>
+    <SubTitle text="Your one-stop destination for finding the best game prices."/>
 
     <ColoredButton text="Get Started"/>
 
