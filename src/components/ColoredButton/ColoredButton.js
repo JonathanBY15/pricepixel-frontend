@@ -5,7 +5,7 @@ import './ColoredButton.css'; // Optional: for styling
 const ColoredTitle = ({ text }) => {
   return (
     <button className="colored-button">
-        {text}
+        <span>{text}</span> <img src='/assets/arrow.png' alt="get-started" className="get-started-arrow"/>
     </button>
   );
 };

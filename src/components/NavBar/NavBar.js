@@ -7,19 +7,15 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <h1 className="navbar-logo">PricePixel</h1>
+        <Link to="/" className="navbar-logo">
+          <h1>PricePixel</h1>
+        </Link>
         <ul className="navbar-menu">
           <li>
-            <Link to="/" className="navbar-link">Home</Link>
+            <Link to="/login" className="navbar-link">Login</Link>
           </li>
           <li>
-            <Link to="/wishlists" className="navbar-link">Wishlists</Link>
-          </li>
-          <li>
-            <Link to="/about" className="navbar-link">About</Link>
-          </li>
-          <li>
-            <Link to="/contact" className="navbar-link">Contact</Link>
+            <Link to="/signup" className="navbar-link">Signup</Link>
           </li>
         </ul>
       </div>

@@ -9,8 +9,17 @@
   text-align: center;
   transition: 0.2s;
   cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .colored-button:hover {
   background-color: #0b7289d5;
+}
+
+.get-started-arrow {
+  height: 1.5em;
+  margin-left: 10px;
 }

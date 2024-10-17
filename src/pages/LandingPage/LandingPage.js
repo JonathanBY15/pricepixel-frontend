@@ -42,6 +42,28 @@ const detroit_stores = [
   { name: 'Origin', price: '30.99' },
 ];
 
+const cyb_stores = [
+  { name: 'Steam', price: '29.99' },
+  { name: 'Epic Games', price: '27.99' },
+  { name: 'Gog', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+  { name: 'Origin', price: '30.99' },
+];
+
 const LandingPage = () => {
   return (
   <div className="landing-page">
@@ -53,20 +75,20 @@ const LandingPage = () => {
 
     <div className="info-card-container">
         <InfoCard 
-        title="Real-Time Price Tracking" 
-        description="Get instant updates on price changes across stores for the best deals." 
+        title="Price Comparison" 
+        description="Compare prices from various stores to find the best offers." 
         icon={'/assets/piggy.png'}
         />
         <InfoCard 
         title="Wishlist Alerts" 
-        description="Set price thresholds and get notified when your games drop below." 
+        description="Set price thresholds and get notified when your favorite games drop below." 
         icon={'/assets/alert.png'}
         />
         <InfoCard 
-        title="Price Comparison" 
-        description="Compare prices from various stores for the best offers." 
-        icon={'/assets/price.png'}
-    />
+        title="Real-Time Prices" 
+        description="View current prices across stores for the best deals." 
+        icon={'/assets/time.png'}
+        />
     </div>
 
     <LogoSlider />
@@ -92,7 +114,7 @@ const LandingPage = () => {
         <GamePriceCard 
           gameImage="https://shared.cloudflare.steamstatic.com//store_item_assets//steam//apps//1091500//capsule_sm_120.jpg?t=1726188854" 
           gameTitle="Cyberpunk 2077" 
-          stores={stores} 
+          stores={cyb_stores} 
         />
       </div>
       <div>
