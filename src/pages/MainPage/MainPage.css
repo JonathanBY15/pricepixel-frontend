@@ -1,0 +1,16 @@
+.game-price-card-container {
+  margin-bottom: 30px;
+}
+
+.outer-container {
+  width: 1100px;
+  /* height: 72vh; */
+  /* overflow-y: auto; */
+  margin: 0 auto;
+  padding: 40px;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+  border-radius: 15px;
+  box-shadow: 28px 28px 50px rgba(13, 39, 80, 0.16),
+    -23px -23px 45px rgba(255, 255, 255, 1);
+}

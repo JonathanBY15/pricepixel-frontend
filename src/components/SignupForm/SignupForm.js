@@ -1,16 +1,48 @@
 // src/components/SignupForm.js
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignupForm.css'; // Optional: for styling
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [repeatPassword, setRepeatPassword] = useState('');
+  const [error, setError] = useState('');
+  const navigate = useNavigate(); // To redirect after successful signup
+
+  const handleSignup = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    if (password !== repeatPassword) {
+      setError("Passwords don't match");
+      return;
+    }
+
+    try {
+      const response = await fetch('http://localhost:3001/api/auth/signup', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Signup failed');
+      }
+
+      const data = await response.json();
+      // Optionally store token or handle redirect
+      localStorage.setItem('token', data.token);
+      navigate('/home'); // Redirect to login after signup
+    } catch (error) {
+      setError(error.message);
+    }
+  };
 
   return (
     <div className="signup-form-container">
       <h1 className='signup-h1'>Signup</h1>
-      <form className="signup-form">
+      <form className="signup-form" onSubmit={handleSignup}>
         <div className="form-group">
           <label htmlFor="username">Username</label>
           <input
@@ -38,20 +70,22 @@ const SignupForm = () => {
           <input
             type="password"
             id="password-repeat"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            value={repeatPassword}
+            onChange={(e) => setRepeatPassword(e.target.value)}
             placeholder="Repeat your password"
           />
         </div>
+
+        {error && <p className="error-message">{error}</p>} {/* Display error if signup fails */}
 
         <button type="submit" className="signup-button">
           Sign Up
         </button>
       </form>
 
-    <Link to="/login" className="has-account">
+      <Link to="/login" className="has-account">
         <p>Already have an account? Login.</p>
-    </Link>
+      </Link>
     </div>
   );
 };

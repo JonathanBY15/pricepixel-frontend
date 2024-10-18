@@ -6,7 +6,7 @@
   z-index: 1000; /* Ensure it is above other content */
   background-color: #ffffff5d;
   /* Slightly white with opacity */
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(12px);
   padding: 0 20px;
   border-bottom: rgb(206, 210, 216) 1px solid;
 }

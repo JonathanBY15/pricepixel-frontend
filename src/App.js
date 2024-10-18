@@ -8,6 +8,7 @@ import ColoredButton from './components/ColoredButton/ColoredButton';
 import LandingPage from './pages/LandingPage/LandingPage';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
+import MainPage from './pages/MainPage/MainPage';
 import './App.css';
 // Import your other components/pages here
 // import Login from './pages/Login';
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         {/* Define your routes here */}
         <Route path="/" element={<LandingPage />} />
+        <Route path="/home" element={<MainPage />} />
         <Route path="/login" exact element={<Login />} />
         <Route path="/signup" exact element={<Signup />} />
       </Routes>
