@@ -23,7 +23,7 @@ const SearchBar = ({ onSearch }) => {
         value={searchTerm}
         onChange={handleInputChange}
       />
-      <button type="submit">Search</button>
+      <button type="submit"><i className="fa-solid fa-magnifying-glass"></i> Search</button>
     </form>
   );
 };

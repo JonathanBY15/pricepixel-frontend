@@ -6,7 +6,7 @@ const GamePriceCard = ({ gameImage, gameTitle, stores }) => {
     <div className="game-price-card">
       {/* Game image */}
       <img src={gameImage} alt={gameTitle} className="game-image" />
-      <button className='wishlist-button'><i class="fa-solid fa-plus"></i> Add to favorites</button>
+      <button className='wishlist-button'><i class="fa-solid fa-bell"></i> Set Notification</button>
 
       {/* Game Title */}
       <h3 className="game-title">{gameTitle}</h3>
