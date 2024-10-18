@@ -82,7 +82,7 @@ const NavBar = () => {
         </Link>
         <ul className="navbar-menu">
           <li>
-            <Link to="/" className="navbar-link" onClick={handleLogoClick}>Home</Link>
+            <Link to="/" className="navbar-link" onClick={handleLogoClick}><i class="fa-solid fa-house"></i> Home</Link>
           </li>
           {isLoggedIn ? (
             <li>
@@ -91,16 +91,16 @@ const NavBar = () => {
                 className="navbar-link"
                 onClick={handleLogout}
               >
-                Log Out
+                <i class="fa-solid fa-right-from-bracket"></i> Log Out
               </Link>
             </li>
           ) : (
             <>
               <li>
-                <Link to="/login" className="navbar-link">Login</Link>
+                <Link to="/login" className="navbar-link"><i class="fa-solid fa-right-to-bracket"></i> Login</Link>
               </li>
               <li>
-                <Link to="/signup" className="navbar-link">Signup</Link>
+                <Link to="/signup" className="navbar-link"><i class="fa-solid fa-user-plus"></i> Signup</Link>
               </li>
             </>
           )}
