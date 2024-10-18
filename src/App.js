@@ -21,14 +21,14 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
 
           {/* Protect the /home route */}
-          <Route 
+          {/* <Route 
             path="/home" 
             element={
               <PrivateRoute>
                 <MainPage />
               </PrivateRoute>
             } 
-          />
+          /> */}
         </Routes>
       </Router>
     </div>

@@ -2,6 +2,7 @@
 
 .colored-title {
   text-align: center; /* Center the title */
+  margin-top: 76px; /* Add space above the title */
 }
 
 .gradient-text {

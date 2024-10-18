@@ -33,7 +33,7 @@ const SignupForm = () => {
       const data = await response.json();
       // Optionally store token or handle redirect
       localStorage.setItem('token', data.token);
-      navigate('/home'); // Redirect to login after signup
+      navigate('/'); // Redirect to login after signup
     } catch (error) {
       setError(error.message);
     }

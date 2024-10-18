@@ -27,7 +27,7 @@ const LoginForm = () => {
       const data = await response.json();
       // Store the token in local storage (or handle it however you prefer)
       localStorage.setItem('token', data.token);
-      navigate('/home'); // Redirect to home or any other page
+      navigate('/'); // Redirect to home or any other page
     } catch (error) {
       setError(error.message);
     }

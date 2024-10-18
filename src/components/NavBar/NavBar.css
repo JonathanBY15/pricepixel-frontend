@@ -1,8 +1,10 @@
 /* src/components/NavBar.css */
 
 .navbar {
-  position: sticky; /* Makes the navbar sticky */
+  position: fixed; /* Makes the navbar sticky */
   top: 0; /* Sticks to the top */
+  left: 0; /* Ensure it starts from the left edge */
+  right: 0; /* Ensure it stretches to the right edge */
   z-index: 1000; /* Ensure it is above other content */
   background-color: #ffffff5d;
   /* Slightly white with opacity */
