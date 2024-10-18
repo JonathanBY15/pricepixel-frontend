@@ -2,6 +2,8 @@
 import React from 'react';
 import GamePriceCard from '../../components/GamePriceCard/GamePriceCard';
 import SearchBar from '../../components/SearchBar/SearchBar';
+import ColoredTitle from '../../components/ColoredTitle/ColoredTitle';
+import SubTitle from '../../components/SubTitle/SubTitle';
 import './MainPage.css';
 
 
@@ -29,6 +31,8 @@ const MainPage = () => {
     };
   return (
   <div className="landing-page">
+    <ColoredTitle text="PricePixel"/>
+    <SubTitle/>
         
 
     <SearchBar onSearch={handleSearch} />
