@@ -61,3 +61,20 @@
   color: #4caf50;
   font-weight: bold;
 }
+
+.wishlist-button {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  background-color: #c7c7c7;
+  width: 100%;
+  border: none;
+  /* border-radius: 0 0 0px 0px; */
+  padding: 5px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.wishlist-button:hover {
+  background-color: #919191;
+  color: #ebebeb;
+}

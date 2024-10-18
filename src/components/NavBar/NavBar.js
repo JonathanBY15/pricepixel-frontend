@@ -19,9 +19,11 @@ const NavBar = () => {
           <h1>PricePixel</h1>
         </Link>
         <ul className="navbar-menu">
-          <li>
-            <Link to="/home" className="navbar-link">Home</Link>
-          </li>
+          {isLoggedIn && (
+            <li>
+              <Link to="/home" className="navbar-link">Home</Link>
+            </li>
+          )}
           {isLoggedIn ? (
             <li>
               <Link 
