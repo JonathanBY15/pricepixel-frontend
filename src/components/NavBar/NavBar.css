@@ -39,8 +39,16 @@
 .navbar-link {
   color: #0b7189;
   text-decoration: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: 0.2s;
 }
 
 .navbar-link:hover {
-  text-decoration: underline;
+  background-color: #0b72892c;
+}
+
+.navbar-link.active {
+  background-color: #0b7189;
+  color: white;
 }
