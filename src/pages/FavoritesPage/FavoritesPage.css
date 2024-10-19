@@ -1,0 +1,10 @@
+.game-price-card-container {
+  margin-bottom: 30px;
+}
+
+.favorites-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px 100px;
+}

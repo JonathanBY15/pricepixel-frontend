@@ -5,7 +5,8 @@ import NavBar from './components/NavBar/NavBar';
 import LandingPage from './pages/LandingPage/LandingPage';
 import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
-import MainPage from './pages/MainPage/MainPage';
+import FavoritesPage from './pages/FavoritesPage/FavoritesPage';
+
 import PrivateRoute from './components/PrivateRoute'; // Import the PrivateRoute component
 import './App.css';
 
@@ -21,14 +22,14 @@ const App = () => {
           <Route path="/signup" element={<Signup />} />
 
           {/* Protect the /home route */}
-          {/* <Route 
-            path="/home" 
+          <Route 
+            path="/favorites" 
             element={
               <PrivateRoute>
-                <MainPage />
+                <FavoritesPage />
               </PrivateRoute>
             } 
-          /> */}
+          />
         </Routes>
       </Router>
     </div>
