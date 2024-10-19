@@ -12,6 +12,7 @@
 
 .game-image {
   width: 100%;
+  height: 95px;
   object-fit: cover;
 }
 

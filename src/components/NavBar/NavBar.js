@@ -12,25 +12,38 @@ const NavBar = () => {
     navigate('/login'); // Redirect to login page after logout
   };
 
-  const handleLogoClick = (event) => {
-    if (location.pathname === '/') {
-      event.preventDefault(); // Prevent default navigation if on the same page
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to top of the page smoothly
+  const handleNavigateAndScroll = (event, targetPath) => {
+    event.preventDefault();
+
+    if (location.pathname === targetPath) {
+      // If the user is already on the target page, just scroll to the top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // If the user is on a different page, navigate to the target page
+      navigate(targetPath);
+      // After navigating, scroll to the top of the page
+      setTimeout(() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }, 100); // Adding a slight delay to ensure the page has navigated
     }
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link to="/" className="navbar-logo" onClick={handleLogoClick}>
+        <Link
+          to="/"
+          className="navbar-logo"
+          onClick={(event) => handleNavigateAndScroll(event, '/')}
+        >
           <h1>PricePixel</h1>
         </Link>
         <ul className="navbar-menu">
           <li>
-            <Link 
-              to="/" 
-              className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`} 
-              onClick={handleLogoClick}
+            <Link
+              to="/"
+              className={`navbar-link ${location.pathname === '/' ? 'active' : ''}`}
+              onClick={(event) => handleNavigateAndScroll(event, '/')}
             >
               <i className="fa-solid fa-house"></i> Home
             </Link>
@@ -38,15 +51,16 @@ const NavBar = () => {
           {isLoggedIn ? (
             <>
               <li>
-                <Link 
-                  to="/favorites" 
+                <Link
+                  to="/favorites"
                   className={`navbar-link ${location.pathname === '/favorites' ? 'active' : ''}`}
+                  onClick={(event) => handleNavigateAndScroll(event, '/favorites')}
                 >
                   <i className="fa-solid fa-star"></i> Favorites
                 </Link>
               </li>
               <li>
-                <Link 
+                <Link
                   to="/login"
                   className="navbar-link"
                   onClick={handleLogout}
@@ -58,16 +72,16 @@ const NavBar = () => {
           ) : (
             <>
               <li>
-                <Link 
-                  to="/login" 
+                <Link
+                  to="/login"
                   className={`navbar-link ${location.pathname === '/login' ? 'active' : ''}`}
                 >
                   <i className="fa-solid fa-right-to-bracket"></i> Login
                 </Link>
               </li>
               <li>
-                <Link 
-                  to="/signup" 
+                <Link
+                  to="/signup"
                   className={`navbar-link ${location.pathname === '/signup' ? 'active' : ''}`}
                 >
                   <i className="fa-solid fa-user-plus"></i> Signup
