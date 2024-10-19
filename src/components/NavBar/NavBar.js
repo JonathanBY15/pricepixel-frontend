@@ -56,7 +56,7 @@ const NavBar = () => {
                   className={`navbar-link ${location.pathname === '/favorites' ? 'active' : ''}`}
                   onClick={(event) => handleNavigateAndScroll(event, '/favorites')}
                 >
-                  <i className="fa-solid fa-star"></i> Favorites
+                  <i class="fa-solid fa-bell"></i> Notifications
                 </Link>
               </li>
               <li>

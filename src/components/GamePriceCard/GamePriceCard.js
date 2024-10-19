@@ -15,7 +15,7 @@ const GamePriceCard = ({ gameImage, gameTitle, stores }) => {
       <div className="store-price-list">
         {stores.map((store, index) => (
           <div className="store-price-item" key={index}>
-            <span className="store-name">{store.name}</span>
+            <span className="store-name"><span className="store-icon-span"><img src={store.storeIcon} className="store-icon" /> </span>{store.storeName}</span>
             <span className="price">{`$${store.price}`}</span>
           </div>
         ))}
