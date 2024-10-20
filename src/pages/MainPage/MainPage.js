@@ -17,8 +17,9 @@ const MainPage = () => {
             const limitedIds = ids.slice(0, 25).join(',');
             const response = await axios.get(`https://www.cheapshark.com/api/1.0/games?ids=${limitedIds}`);
             const games = response.data;
-
-            const processedGameData = Object.values(games).map(game => ({
+    
+            const processedGameData = Object.entries(games).map(([gameID, game]) => ({
+                gameID: gameID, // Use the key (which is the gameID) directly
                 title: game.info.title,
                 image: game.info.thumb,
                 stores: game.deals.map(deal => ({
@@ -27,7 +28,7 @@ const MainPage = () => {
                     price: deal.price,
                 })),
             }));
-
+    
             setGameData(processedGameData);
         } catch (error) {
             console.error('Error fetching game data:', error);

@@ -11,6 +11,7 @@ const GameCatalog = ({ games }) => {
           gameImage={game.image}
           gameTitle={game.title}
           stores={game.stores}
+          gameID={game.gameID}
         />
       ))}
     </div>

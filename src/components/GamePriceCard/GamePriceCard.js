@@ -37,6 +37,7 @@ const GamePriceCard = ({ gameImage, gameTitle, stores, gameID }) => {
 
   const handleSetNotificationClick = () => {
     setIsPopupOpen(true);
+    console.log(gameID);
   };
 
   const closePopup = () => {
