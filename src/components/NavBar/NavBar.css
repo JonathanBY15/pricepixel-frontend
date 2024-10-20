@@ -50,5 +50,7 @@
 
 .navbar-link.active {
   background-color: #0b7189;
+  /* background-color: #ffffff5d; */
+  backdrop-filter: blur(12px);
   color: white;
 }

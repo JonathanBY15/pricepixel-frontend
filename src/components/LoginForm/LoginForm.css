@@ -76,3 +76,8 @@
   margin-bottom: auto;
   font-weight: 500;
 }
+
+.error-message {
+  color: #d9534f;
+  text-align: center;
+}

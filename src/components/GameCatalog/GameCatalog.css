@@ -1,0 +1,14 @@
+.game-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 20px; /* Space between rows and columns */
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+/* Responsive handling for GamePriceCard size */
+.game-price-card {
+  /* flex: 1 1 300px; */
+  /* max-width: 300px; */
+}

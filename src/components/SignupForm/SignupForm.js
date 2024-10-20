@@ -5,6 +5,7 @@ import './SignupForm.css'; // Optional: for styling
 
 const SignupForm = () => {
   const [username, setUsername] = useState('');
+  const [repeatUsername, setRepeatUsername] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
   const [error, setError] = useState('');
@@ -14,6 +15,9 @@ const SignupForm = () => {
     e.preventDefault(); // Prevent default form submission
     if (password !== repeatPassword) {
       setError("Passwords don't match");
+      return;
+    }else if(username !== repeatUsername){
+      setError("Emails don't match");
       return;
     }
 
@@ -44,13 +48,25 @@ const SignupForm = () => {
       <h1 className='signup-h1'>Signup</h1>
       <form className="signup-form" onSubmit={handleSignup}>
         <div className="form-group">
-          <label htmlFor="username">Username</label>
+          <label htmlFor="username">Email</label>
           <input
-            type="text"
+            type="email"
             id="username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter your username"
+            placeholder="Enter your email"
+          />
+        </div>
+
+        {/* REPEAT EMAIL */}
+        <div className="form-group">
+          <label htmlFor="username-repeat">Repeat Email</label>
+          <input
+            type="email"
+            id="username-repeat"
+            value={repeatUsername}
+            onChange={(e) => setRepeatUsername(e.target.value)}
+            placeholder="Repeat your email"
           />
         </div>
 
