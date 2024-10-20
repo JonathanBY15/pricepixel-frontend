@@ -1,0 +1,83 @@
+/* NotificationPopup.css */
+.notification-popup {
+  font-family: "Poppins", sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.514); /* Semi-transparent background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Ensure it appears above other content */
+}
+
+.popup-content {
+  background-color: #f5f5f5;
+  padding: 20px; /* Increase padding for better spacing */
+  border-radius: 15px; /* Match border radius */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 400px; /* Match width to the LoginForm */
+}
+
+.popup-heading h3 {
+  margin: 0;
+  margin-bottom: 20px; /* Increase margin for spacing */
+  text-align: center; /* Center the heading */
+  font-size: 1.5em; /* Adjust font size for visibility */
+}
+
+.close-button {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  float: right;
+}
+
+.form-group {
+  margin-bottom: 15px; /* Space between form elements */
+}
+
+.input-group {
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+}
+
+.input-group-prepend {
+  margin-right: 5px; /* Space between dollar sign and input */
+}
+
+.input-group-text {
+  background-color: #f5f5f5; /* Match background color */
+  border: 1px solid #ccc; /* Add border */
+  padding: 10px; /* Padding for the dollar sign */
+  border-radius: 4px 0 0 4px; /* Match border radius */
+}
+
+.price-input {
+  font-family: "Poppins", sans-serif;
+  width: 100%; /* Full width input */
+  padding: 10px; /* Padding for input */
+  border: 1px solid #ccc; /* Border for input */
+  border-radius: 0 4px 4px 0; /* Match border radius */
+  font-size: 16px; /* Font size for input */
+}
+
+.set-button {
+  font-family: "Poppins", sans-serif;
+  background: #4d96a7; /* Match button background */
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Padding for button */
+  border-radius: 5px; /* Border radius */
+  cursor: pointer;
+  margin-top: 10px; /* Space above button */
+  transition: 0.2s; /* Transition for hover effect */
+  width: 100%; /* Full width button */
+}
+
+.set-button:hover {
+  background-color: #3b7885; /* Darker background on hover */
+}
