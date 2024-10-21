@@ -1,15 +1,32 @@
-// src/FavoritesPage.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ColoredTitle from '../../components/ColoredTitle/ColoredTitle';
 import GameCatalog from '../../components/GameCatalog/GameCatalog';
 import { storeNames, storeIcons } from '../../utils/storeData'; // Adjust the path as needed
-import SearchBar from '../../components/SearchBar/SearchBar';
 import axios from 'axios';
 import './FavoritesPage.css';
 
 const FavoritesPage = () => {
     const [gameData, setGameData] = useState([]); // State for game data
-    const [gameIds, setGameIds] = useState([]); // State to store game IDs from search results
+    const [gameIds, setGameIds] = useState([]); // State to store game IDs from the wishlist
+
+    // Fetch wishlist items on component mount
+    useEffect(() => {
+        const fetchWishlistItems = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/wishlist/items', {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } // Add token for authentication
+                });
+                const wishlistItems = response.data;
+                const ids = wishlistItems.map(item => item.game_id); // Extract game IDs
+                setGameIds(ids); // Store the game IDs
+                await fetchAllGameData(ids); // Fetch game data for all wishlist items
+            } catch (error) {
+                console.error('Error fetching wishlist items:', error);
+            }
+        };
+
+        fetchWishlistItems();
+    }, []);
 
     const fetchGameData = async (id) => {
         try {
@@ -34,37 +51,15 @@ const FavoritesPage = () => {
         }
     };
 
-    const fetchAllGameData = async () => {
-        const promises = gameIds.map(id => fetchGameData(id)); // Fetch all game data based on IDs
+    const fetchAllGameData = async (ids) => {
+        const promises = ids.map(id => fetchGameData(id)); // Fetch all game data based on IDs
         const results = await Promise.all(promises);
         setGameData(results.filter(game => game !== null)); // Filter out any null results
     };
 
-    const handleSearch = async (searchTerm) => {
-        console.log(`Searching for: ${searchTerm}`);
-
-        try {
-            const response = await axios.get(`https://www.cheapshark.com/api/1.0/games?title=${searchTerm}`);
-            const games = response.data; // Adjust according to the actual response structure
-
-            if (games.length > 0) {
-                const ids = games.map(game => game.gameID); // Extract game IDs
-                console.log('Game IDs from search result:', ids); // Log the game IDs
-                setGameIds(ids); // Store the game IDs
-                await fetchAllGameData(); // Fetch game data with the new IDs
-            } else {
-                console.error('No games found for the given search term.');
-                setGameData([]); // Reset game data if no results
-            }
-        } catch (error) {
-            console.error('Error fetching game data:', error);
-        }
-    };
-
     return (
         <div className="favorites-page">
-            <ColoredTitle text="Notifications" />
-            <SearchBar onSearch={handleSearch} />
+            <ColoredTitle text="My Wishlist" />
             <GameCatalog games={gameData} /> {/* Pass game data to GameCatalog */}
         </div>
     );
