@@ -1,17 +1,36 @@
-// NotificationPopup.js
 import React, { useState } from 'react';
 import './NotificationPopup.css'; // Ensure this imports your updated CSS
 
-const NotificationPopup = ({ gameID, onClose }) => {
-    const email = 'bariscanyaprak@gmail.com';
+const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid and email
     const [price, setPrice] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            // First, set the notification with CheapShark API
             const response = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=set&email=${email}&gameID=${gameID}&price=${price}`);
             // Handle the response as needed (e.g., display success message)
             console.log('Notification set:', response);
+            
+            // Now send a request to your backend to add the item to the wishlist
+            const wishlistResponse = await fetch('http://localhost:3001/api/wishlist/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    uid: uid, // Pass uid
+                    gameID: gameID,
+                    alert_price: price,
+                }),
+            });
+
+            if (wishlistResponse.ok) {
+                console.log('Game added to wishlist');
+            } else {
+                console.error('Failed to add game to wishlist');
+            }
+
             onClose(); // Close the popup after submission
         } catch (error) {
             console.error('Error setting notification:', error);

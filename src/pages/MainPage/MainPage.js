@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SubTitle from '../../components/SubTitle/SubTitle';
 import ColoredTitle from '../../components/ColoredTitle/ColoredTitle';
 import GameCatalog from '../../components/GameCatalog/GameCatalog';
@@ -10,6 +10,28 @@ import './MainPage.css';
 const MainPage = () => {
     const [gameData, setGameData] = useState([]); // State for game data
     const [loading, setLoading] = useState(false); // State for loading status
+    const [uid, setUid] = useState(null); // State for user ID
+    const [email, setEmail] = useState(''); // State for email
+
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const token = localStorage.getItem('token'); // Assuming you store the JWT token in local storage
+                const response = await axios.get('http://localhost:3001/api/auth/user', {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Include the token in the request headers
+                    }
+                });
+                setUid(response.data.uid); // Set user ID
+                setEmail(response.data.email); // Set email
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+                // Handle error (e.g., show a message to the user)
+            }
+        };
+
+        fetchUserInfo(); // Call the function to fetch user info
+    }, []); // Empty dependency array means this runs once on component mount
 
     const fetchGameData = async (ids) => {
         try {
@@ -17,7 +39,7 @@ const MainPage = () => {
             const limitedIds = ids.slice(0, 25).join(',');
             const response = await axios.get(`https://www.cheapshark.com/api/1.0/games?ids=${limitedIds}`);
             const games = response.data;
-    
+
             const processedGameData = Object.entries(games).map(([gameID, game]) => ({
                 gameID: gameID, // Use the key (which is the gameID) directly
                 title: game.info.title,
@@ -28,7 +50,7 @@ const MainPage = () => {
                     price: deal.price,
                 })),
             }));
-    
+
             setGameData(processedGameData);
         } catch (error) {
             console.error('Error fetching game data:', error);
@@ -72,7 +94,7 @@ const MainPage = () => {
             ) : gameData.length === 0 ? (
                 <p className="no-data-message">Use the search bar to <span>find the best deals</span> on your favorite games!</p>
             ) : (
-                <GameCatalog games={gameData} /> // Pass game data to GameCatalog
+                <GameCatalog games={gameData} uid={uid} email={email} /> // Pass game data, uid, and email to GameCatalog
             )}
         </div>
     );
