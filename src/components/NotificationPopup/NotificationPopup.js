@@ -7,6 +7,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
+            console.log('Setting notification for game:', gameID, 'at price:', price, 'for user:', uid, 'with email:', email);
             // First, set the notification with CheapShark API
             const response = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=set&email=${email}&gameID=${gameID}&price=${price}`);
             // Handle the response as needed (e.g., display success message)
@@ -17,6 +18,8 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    // Include the token in the headers
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify({
                     uid: uid, // Pass uid
