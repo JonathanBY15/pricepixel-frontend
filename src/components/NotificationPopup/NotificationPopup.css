@@ -81,3 +81,20 @@
 .set-button:hover {
   background-color: #3b7885; /* Darker background on hover */
 }
+
+.delete-button {
+  font-family: "Poppins", sans-serif;
+  background: #d14637; /* Bright red background */
+  color: white;
+  border: none;
+  padding: 10px 20px; /* Padding for button */
+  border-radius: 5px; /* Border radius */
+  cursor: pointer;
+  margin-top: 10px; /* Space above button */
+  transition: 0.2s; /* Transition for hover effect */
+  width: 100%; /* Full width button */
+}
+
+.delete-button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}

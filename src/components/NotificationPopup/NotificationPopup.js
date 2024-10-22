@@ -1,28 +1,59 @@
-import React, { useState } from 'react';
-import './NotificationPopup.css'; // Ensure this imports your updated CSS
+import React, { useState, useEffect } from 'react';
+import './NotificationPopup.css'; 
+import axios from 'axios'; 
 
-const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid and email
+const NotificationPopup = ({ gameID, uid, email, onClose }) => { 
     const [price, setPrice] = useState('');
+    const [isWishlisted, setIsWishlisted] = useState(false); 
+    const [loading, setLoading] = useState(true); 
+
+    useEffect(() => {
+        const fetchWishlistItems = async () => {
+            try {
+                const response = await axios.get('http://localhost:3001/api/wishlist/items', {
+                    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } 
+                });
+
+                const wishlistItems = response.data;
+
+                if (gameID) {
+                    const isGameWishlisted = wishlistItems.some(item => {
+                        return item.game_id === Number(gameID);
+                    });
+
+                    setIsWishlisted(isGameWishlisted);
+                    console.log(`Game ID: ${gameID} is wishlisted: ${isGameWishlisted}`); // Log final status
+                } else {
+                    console.warn('gameID is undefined');
+                }
+            } catch (error) {
+                console.error('Error fetching wishlist items:', error);
+            } finally {
+                setLoading(false); // Set loading to false once data is fetched
+            }
+        };
+
+        fetchWishlistItems();
+    }, [gameID]); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
             console.log('Setting notification for game:', gameID, 'at price:', price, 'for user:', uid, 'with email:', email);
-            // First, set the notification with CheapShark API
+
+            // Set the notification with CheapShark API
             const response = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=set&email=${email}&gameID=${gameID}&price=${price}`);
-            // Handle the response as needed (e.g., display success message)
             console.log('Notification set:', response);
-            
-            // Now send a request to your backend to add the item to the wishlist
+
+            // Send request to backend to add the item to the wishlist
             const wishlistResponse = await fetch('http://localhost:3001/api/wishlist/add', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    // Include the token in the headers
                     Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },
                 body: JSON.stringify({
-                    uid: uid, // Pass uid
+                    uid: uid,
                     gameID: gameID,
                     alert_price: price,
                 }),
@@ -30,6 +61,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
 
             if (wishlistResponse.ok) {
                 console.log('Game added to wishlist');
+                setIsWishlisted(true);
             } else {
                 console.error('Failed to add game to wishlist');
             }
@@ -48,7 +80,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
                     <h3>Set Alert Price</h3>
                 </div>
                 <form onSubmit={handleSubmit}>
-                    <div className="form-group"> {/* Added form-group wrapper */}
+                    <div className="form-group">
                         <label>
                             Price:
                             <div className="input-group">
@@ -67,9 +99,16 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
                             </div>
                         </label>
                     </div>
-                    <button type="submit" className='set-button'>
-                        <i className="fa-solid fa-bell"></i> Set Notification
-                    </button>
+                    <div className="button-group">
+                        <button type="submit" className='set-button'>
+                            <i className="fa-solid fa-bell"></i> Set Notification
+                        </button>
+                        {!loading && isWishlisted && (
+                            <button type="button" className='delete-button'>
+                                <i className="fa-solid fa-trash"></i> Delete Notification
+                            </button>
+                        )}
+                    </div>
                 </form>
             </div>
         </div>
@@ -77,3 +116,4 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => { // Accept uid a
 };
 
 export default NotificationPopup;
+

@@ -7,7 +7,30 @@ import './FavoritesPage.css';
 
 const FavoritesPage = () => {
     const [gameData, setGameData] = useState([]); // State for game data
-    const [gameIds, setGameIds] = useState([]); // State to store game IDs from the wishlist
+    const [loading, setLoading] = useState(false); // State for loading status
+    const [uid, setUid] = useState(null); // State to store user ID
+    const [email, setEmail] = useState(''); // State to store user email
+
+    // Fetch user info on component mount
+    useEffect(() => {
+        const fetchUserInfo = async () => {
+            try {
+                const token = localStorage.getItem('token'); // Get the JWT token from local storage
+                const response = await axios.get('http://localhost:3001/api/auth/user', {
+                    headers: {
+                        Authorization: `Bearer ${token}` // Include the token in the request headers
+                    }
+                });
+                setUid(response.data.uid); // Set user ID
+                setEmail(response.data.email); // Set email
+            } catch (error) {
+                console.error('Error fetching user info:', error);
+                // Handle error (e.g., show a message to the user)
+            }
+        };
+
+        fetchUserInfo(); // Call the function to fetch user info
+    }, []); // Empty dependency array means this runs once on component mount
 
     // Fetch wishlist items on component mount
     useEffect(() => {
@@ -18,51 +41,57 @@ const FavoritesPage = () => {
                 });
                 const wishlistItems = response.data;
                 const ids = wishlistItems.map(item => item.game_id); // Extract game IDs
-                setGameIds(ids); // Store the game IDs
-                await fetchAllGameData(ids); // Fetch game data for all wishlist items
+                await fetchGameData(ids); // Fetch game data for all wishlist items
             } catch (error) {
                 console.error('Error fetching wishlist items:', error);
             }
         };
 
         fetchWishlistItems();
-    }, []);
+    }, []); // This runs once on component mount after user info has been fetched
 
-    const fetchGameData = async (id) => {
+    const fetchGameData = async (ids) => {
         try {
-            const response = await axios.get(`https://www.cheapshark.com/api/1.0/games?id=${id}`);
-            const { info, deals } = response.data;
+            setLoading(true); // Set loading to true when fetching data
+            const limitedIds = ids.slice(0, 25).join(','); // Limit to 25 IDs for the request
+            const response = await axios.get(`https://www.cheapshark.com/api/1.0/games?ids=${limitedIds}`);
+            const games = response.data;
 
-            const storeData = deals.map(deal => ({
-                storeName: storeNames[deal.storeID], // Convert store ID to store name
-                storeIcon: storeIcons[deal.storeID], // Convert store ID to store icon
-                price: deal.price,
+            const processedGameData = Object.entries(games).map(([gameID, game]) => ({
+                gameID: gameID, // Use the key (which is the gameID) directly
+                title: game.info.title,
+                image: game.info.thumb,
+                stores: game.deals.map(deal => ({
+                    storeName: storeNames[deal.storeID],
+                    storeIcon: storeIcons[deal.storeID],
+                    price: deal.price,
+                })),
             }));
 
-            // Return the game information including the title, image, and stores
-            return {
-                title: info.title,
-                image: info.thumb,
-                stores: storeData,
-            };
+            setGameData(processedGameData);
         } catch (error) {
             console.error('Error fetching game data:', error);
-            return null; // Return null in case of error
+            setGameData([]); // Reset game data in case of an error
+        } finally {
+            setLoading(false); // Set loading to false after fetching
         }
-    };
-
-    const fetchAllGameData = async (ids) => {
-        const promises = ids.map(id => fetchGameData(id)); // Fetch all game data based on IDs
-        const results = await Promise.all(promises);
-        setGameData(results.filter(game => game !== null)); // Filter out any null results
     };
 
     return (
         <div className="favorites-page">
-            <ColoredTitle text="My Wishlist" />
-            <GameCatalog games={gameData} /> {/* Pass game data to GameCatalog */}
+            <ColoredTitle text="Notifications" />
+            {loading ? (
+                <div className="loading-icon">
+                    <div className="spinner"></div> {/* Loading spinner */}
+                </div>
+            ) : uid && email ? ( // Ensure uid and email are defined before rendering
+                <GameCatalog games={gameData} uid={uid} email={email} /> // Pass game data, uid, and email to GameCatalog
+            ) : (
+                <p>Loading user data...</p> // Optionally display a loading state
+            )}
         </div>
     );
 };
 
 export default FavoritesPage;
+
