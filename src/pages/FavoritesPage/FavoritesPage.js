@@ -85,7 +85,11 @@ const FavoritesPage = () => {
                     <div className="spinner"></div> {/* Loading spinner */}
                 </div>
             ) : uid && email ? ( // Ensure uid and email are defined before rendering
-                <GameCatalog games={gameData} uid={uid} email={email} /> // Pass game data, uid, and email to GameCatalog
+                gameData.length > 0 ? ( // Check if there are any games in the data
+                    <GameCatalog games={gameData} uid={uid} email={email} /> // Pass game data, uid, and email to GameCatalog
+                ) : (
+                    <p className="no-data-message">You currently have no price alerts. Use the <span>Home Page</span> to set price notifications.</p>
+                )
             ) : (
                 <p>Loading user data...</p> // Optionally display a loading state
             )}
@@ -94,4 +98,3 @@ const FavoritesPage = () => {
 };
 
 export default FavoritesPage;
-
