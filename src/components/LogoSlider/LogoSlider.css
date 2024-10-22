@@ -9,11 +9,13 @@
 
 .logos {
   overflow: hidden;
-  padding: 30px 0px;
+  /* margin-top: 30px; */
   white-space: nowrap;
   position: relative;
   width: 1000px;
-  height: 100px;
+  height: 80px;
+  margin: 0;
+  margin-top: 20px;
 }
 
 .logos:before,
@@ -47,7 +49,7 @@
 .logo_items {
   display: inline-block;
   animation: 20s slides infinite linear;
-  height: 100px;
+  height: 80px;
 }
 
 .logo_items img {

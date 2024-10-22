@@ -98,3 +98,27 @@
 .delete-button:hover {
   background-color: #c0392b; /* Darker red on hover */
 }
+
+.get-started button {
+  width: 100%; /* Full width button */
+}
+
+/* LandingPage.css or the relevant CSS file */
+
+.login-message {
+  text-align: center; /* Center the text */
+  margin: 0; /* Add vertical margin for spacing */
+  color: #0b7289; /* Use your secondary color for the heading */
+}
+
+.login-message h3 {
+  font-size: 24px; /* Adjust the font size for the heading */
+  font-weight: 600; /* Use a bold weight for emphasis */
+  margin-bottom: 20px; /* Space below the heading */
+}
+
+.login-message p {
+  font-size: 16px; /* Set a comfortable font size for the paragraph */
+  margin-bottom: 20px; /* Space below the paragraph */
+  color: #333; /* Dark gray for better readability */
+}

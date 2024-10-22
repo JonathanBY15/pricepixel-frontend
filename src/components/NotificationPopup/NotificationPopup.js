@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './NotificationPopup.css'; 
+import ColoredButton from '../ColoredButton/ColoredButton'; // Import ColoredButton
 import axios from 'axios'; 
 
 const NotificationPopup = ({ gameID, uid, email, onClose }) => { 
     const [price, setPrice] = useState('');
     const [isWishlisted, setIsWishlisted] = useState(false); 
     const [loading, setLoading] = useState(true); 
+    const navigate = useNavigate(); // Initialize useNavigate
 
     useEffect(() => {
         const fetchWishlistItems = async () => {
@@ -33,11 +36,17 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => {
             }
         };
 
-        fetchWishlistItems();
-    }, [gameID]); 
+        if (uid) { // Only fetch wishlist items if uid exists
+            fetchWishlistItems();
+        } else {
+            setLoading(false); // Set loading to false immediately if uid is not available
+        }
+    }, [gameID, uid]); 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        if (!uid) return; // Do not proceed if there is no uid
+
         try {
             console.log('Setting notification for game:', gameID, 'at price:', price, 'for user:', uid, 'with email:', email);
 
@@ -107,49 +116,65 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => {
             console.error('Error deleting notification:', error);
         }
     };
-    
+
+    const handleLoginRedirect = () => {
+        navigate('/login'); // Use navigate to go to the login page
+    };
 
     return (
         <div className="notification-popup">
             <div className="popup-content">
                 <div className="popup-heading">
                     <button className="close-button" onClick={onClose}><i className="fa-solid fa-xmark"></i></button>
-                    <h3>Set Alert Price</h3>
                 </div>
-                <form onSubmit={handleSubmit}>
-                    <div className="form-group">
-                        <label>
-                            Price:
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <div className="input-group-text">$</div>
-                                </div>
-                                <input 
-                                    type="number" 
-                                    value={price} 
-                                    onChange={(e) => setPrice(e.target.value)} 
-                                    required 
-                                    min="0" 
-                                    className="price-input"
-                                    placeholder='EX: 10.00 or 10'
-                                />
+                {uid ? ( // Conditional rendering based on uid
+                    <>
+                        <h3>Set Alert Price</h3>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <label>
+                                    Price:
+                                    <div className="input-group">
+                                        <div className="input-group-prepend">
+                                            <div className="input-group-text">$</div>
+                                        </div>
+                                        <input 
+                                            type="number" 
+                                            value={price} 
+                                            onChange={(e) => setPrice(e.target.value)} 
+                                            required 
+                                            min="0" 
+                                            className="price-input"
+                                            placeholder='EX: 10.00 or 10'
+                                        />
+                                    </div>
+                                </label>
                             </div>
-                        </label>
-                    </div>
-                    <div className="button-group">
-                        <button type="submit" className='set-button'>
-                            <i className="fa-solid fa-bell"></i> Set Notification
-                        </button>
-                        {!loading && isWishlisted && (
-                            <button type="button" className='delete-button' onClick={handleDeleteNotification}>
-                                <i className="fa-solid fa-trash"></i> Delete Notification
-                            </button>
-                        )}
-                    </div>
-                </form>
+                            <div className="button-group">
+                                <button type="submit" className='set-button'>
+                                    <i className="fa-solid fa-bell"></i> Set Notification
+                                </button>
+                                {!loading && isWishlisted && (
+                                    <button type="button" className='delete-button' onClick={handleDeleteNotification}>
+                                        <i className="fa-solid fa-trash"></i> Delete Notification
+                                    </button>
+                                )}
+                            </div>
+                        </form>
+                    </>
+                ) : (
+                    <>
+                        <div className="login-message">
+                        <h3><i className="fa-solid fa-bell"></i> Login to receive price alerts.</h3>
+                        <p>Get notified when your game prices drop! Set a price, and we'll email you when it falls below.</p>
+                        <ColoredButton text="Get Started" className="get-started" />
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );
 };
 
 export default NotificationPopup;
+
