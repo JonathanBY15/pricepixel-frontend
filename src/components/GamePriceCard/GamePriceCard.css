@@ -80,3 +80,15 @@
   background-color: #919191;
   color: #ebebeb;
 }
+
+.active-alert {
+  background-color: #d14637;
+  color: white;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.active-alert:hover {
+  background-color: #c0392b;
+}
