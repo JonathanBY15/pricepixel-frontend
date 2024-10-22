@@ -72,6 +72,43 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => {
         }
     };
 
+    const handleDeleteNotification = async () => {
+        try {
+            console.log('Removing notification for game:', gameID, 'for user:', email);
+    
+            // Send request to CheapShark API to delete the notification
+            const deleteResponse = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=delete&email=${email}&gameID=${gameID}`);
+            console.log('Delete notification response:', deleteResponse);
+    
+            // Send request to backend to remove the item from the wishlist
+            const wishlistDeleteResponse = await fetch('http://localhost:3001/api/wishlist/remove', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${localStorage.getItem('token')}`,
+                },
+                body: JSON.stringify({
+                    gameID: gameID, // Pass the gameID to remove
+                }),
+            });
+    
+            if (wishlistDeleteResponse.ok) {
+                console.log('Game removed from wishlist');
+                setIsWishlisted(false); // Update state to reflect that the game is no longer wishlisted
+    
+                // Refresh the page to see the updated state
+                window.location.reload();
+            } else {
+                console.error('Failed to remove game from wishlist');
+            }
+    
+            onClose(); // Close the popup after deletion
+        } catch (error) {
+            console.error('Error deleting notification:', error);
+        }
+    };
+    
+
     return (
         <div className="notification-popup">
             <div className="popup-content">
@@ -104,7 +141,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => {
                             <i className="fa-solid fa-bell"></i> Set Notification
                         </button>
                         {!loading && isWishlisted && (
-                            <button type="button" className='delete-button'>
+                            <button type="button" className='delete-button' onClick={handleDeleteNotification}>
                                 <i className="fa-solid fa-trash"></i> Delete Notification
                             </button>
                         )}
@@ -116,4 +153,3 @@ const NotificationPopup = ({ gameID, uid, email, onClose }) => {
 };
 
 export default NotificationPopup;
-
