@@ -9,3 +9,21 @@
   justify-content: center;
   padding: 50px 100px;
 }
+
+.no-data-message {
+  font-size: 1.5rem; /* Larger text size */
+  color: #4d96a7; /* Match button color from your color palette */
+  text-align: center; /* Center the text */
+  margin-top: 50px; /* Add space from the top */
+  font-weight: 500; /* Slightly bold */
+  opacity: 0.8; /* Slight transparency for subtle effect */
+  background-color: #f5f5f5; /* Match the background color of your app */
+  padding: 20px; /* Add some padding around the text */
+  border-radius: 10px; /* Smooth corners */
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2); /* More prominent shadow */
+}
+
+.no-data-message span {
+  font-weight: bold; /* Highlight certain words */
+  color: #0b7289; /* Secondary color to match the palette */
+}
