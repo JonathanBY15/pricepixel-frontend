@@ -1,0 +1,33 @@
+.not-found-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #f5f5f5;
+  color: #0b7189;
+}
+
+.not-found-page h1 {
+  font-size: 8rem;
+  font-weight: 700;
+  color: #c74a4a; /* Muted red for the 404 number */
+  margin: 0;
+}
+
+.not-found-page h2 {
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin: 10px 0;
+}
+
+.not-found-page p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #4d96a7; /* Matching secondary text color */
+}
+
+a {
+  text-decoration: none;
+}
