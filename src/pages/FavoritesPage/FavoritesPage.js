@@ -16,7 +16,7 @@ const FavoritesPage = () => {
         const fetchUserInfo = async () => {
             try {
                 const token = localStorage.getItem('token'); // Get the JWT token from local storage
-                const response = await axios.get('http://localhost:3001/api/auth/user', {
+                const response = await axios.get('https://pricepixel-backend.onrender.com/api/auth/user', {
                     headers: {
                         Authorization: `Bearer ${token}` // Include the token in the request headers
                     }
@@ -36,7 +36,7 @@ const FavoritesPage = () => {
     useEffect(() => {
         const fetchWishlistItems = async () => {
             try {
-                const response = await axios.get('http://localhost:3001/api/wishlist/items', {
+                const response = await axios.get('https://pricepixel-backend.onrender.com/api/wishlist/items', {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` } // Add token for authentication
                 });
                 const wishlistItems = response.data;

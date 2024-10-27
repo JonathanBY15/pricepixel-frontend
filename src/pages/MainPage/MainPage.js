@@ -17,7 +17,7 @@ const MainPage = () => {
         const fetchUserInfo = async () => {
             try {
                 const token = localStorage.getItem('token'); // Assuming you store the JWT token in local storage
-                const response = await axios.get('http://localhost:3001/api/auth/user', {
+                const response = await axios.get('https://pricepixel-backend.onrender.com/api/auth/user', {
                     headers: {
                         Authorization: `Bearer ${token}` // Include the token in the request headers
                     }

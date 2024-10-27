@@ -25,7 +25,7 @@ const GamePriceCard = ({ gameImage, gameTitle, stores, gameID, uid, email }) => 
   useEffect(() => {
     const fetchWishlistItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/wishlist/items', {
+        const response = await axios.get('https://pricepixel-backend.onrender.com/api/wishlist/items', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
 

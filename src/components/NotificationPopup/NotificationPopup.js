@@ -13,7 +13,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose, triggerUpdate }) => {
   useEffect(() => {
     const fetchWishlistItems = async () => {
       try {
-        const response = await axios.get('http://localhost:3001/api/wishlist/items', {
+        const response = await axios.get('https://pricepixel-backend.onrender.com/api/wishlist/items', {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
 
@@ -41,7 +41,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose, triggerUpdate }) => {
 
     try {
       const response = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=set&email=${email}&gameID=${gameID}&price=${price}`);
-      const wishlistResponse = await fetch('http://localhost:3001/api/wishlist/add', {
+      const wishlistResponse = await fetch('https://pricepixel-backend.onrender.com/api/wishlist/add', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -67,7 +67,7 @@ const NotificationPopup = ({ gameID, uid, email, onClose, triggerUpdate }) => {
   const handleDeleteNotification = async () => {
     try {
       const deleteResponse = await fetch(`https://www.cheapshark.com/api/1.0/alerts?action=delete&email=${email}&gameID=${gameID}`);
-      const wishlistDeleteResponse = await fetch('http://localhost:3001/api/wishlist/remove', {
+      const wishlistDeleteResponse = await fetch('https://pricepixel-backend.onrender.com/api/wishlist/remove', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
