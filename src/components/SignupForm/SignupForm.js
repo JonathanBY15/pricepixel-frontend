@@ -16,11 +16,11 @@ const SignupForm = () => {
     if (password !== repeatPassword) {
       setError("Passwords don't match");
       return;
-    }else if(username !== repeatUsername){
+    } else if (username !== repeatUsername) {
       setError("Emails don't match");
       return;
     }
-
+  
     try {
       const response = await fetch('https://pricepixel-backend.onrender.com/api/auth/signup', {
         method: 'POST',
@@ -29,19 +29,21 @@ const SignupForm = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       if (!response.ok) {
-        throw new Error('Signup failed');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Signup failed');
       }
-
+  
       const data = await response.json();
       // Optionally store token or handle redirect
       localStorage.setItem('token', data.token);
-      navigate('/'); // Redirect to login after signup
+      navigate('/'); // Redirect to home or other page after signup
     } catch (error) {
       setError(error.message);
     }
   };
+  
 
   return (
     <div className="signup-form-container">

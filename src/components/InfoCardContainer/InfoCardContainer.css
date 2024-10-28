@@ -1,0 +1,14 @@
+.info-card-container {
+  display: flex;
+  justify-content: space-around;
+  gap: 20px; /* Space between cards */
+  flex-wrap: wrap;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .info-card-container {
+    flex-direction: column; /* Stack vertically on smaller screens */
+    align-items: center;
+  }
+}

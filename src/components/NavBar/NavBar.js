@@ -1,44 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
-import './NavBar.css'; // Optional: for styling
+import './NavBar.css';
 
 const NavBar = () => {
-  const navigate = useNavigate(); // For programmatic navigation
-  const location = useLocation(); // To get current route
-  const isLoggedIn = !!localStorage.getItem('token'); // Check if token exists in localStorage
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isLoggedIn = !!localStorage.getItem('token');
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleLogout = () => {
-    localStorage.removeItem('token'); // Remove the token from localStorage
-    navigate('/login'); // Redirect to login page after logout
+    localStorage.removeItem('token');
+    navigate('/login');
   };
 
   const handleNavigateAndScroll = (event, targetPath) => {
     event.preventDefault();
-
+    setIsMenuOpen(false);
     if (location.pathname === targetPath) {
-      // If the user is already on the target page, just scroll to the top
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } else {
-      // If the user is on a different page, navigate to the target page
       navigate(targetPath);
-      // After navigating, scroll to the top of the page
       setTimeout(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
-      }, 100); // Adding a slight delay to ensure the page has navigated
+      }, 100);
     }
   };
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <Link
-          to="/"
-          className="navbar-logo"
-          onClick={(event) => handleNavigateAndScroll(event, '/')}
-        >
+        <Link to="/" className="navbar-logo" onClick={(event) => handleNavigateAndScroll(event, '/')}>
           <h1>PricePixel</h1>
         </Link>
-        <ul className="navbar-menu">
+        <button className="menu-toggle" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+          <i className={isMenuOpen ? 'fa-solid fa-times' : 'fa-solid fa-bars'}></i>
+        </button>
+        <ul className={`navbar-menu ${isMenuOpen ? 'open' : ''}`}>
           <li>
             <Link
               to="/"
@@ -56,17 +54,13 @@ const NavBar = () => {
                   className={`navbar-link ${location.pathname === '/favorites' ? 'active' : ''}`}
                   onClick={(event) => handleNavigateAndScroll(event, '/favorites')}
                 >
-                  <i class="fa-solid fa-bell"></i> Notifications
+                  <i className="fa-solid fa-bell"></i> Notifications
                 </Link>
               </li>
               <li>
-                <Link
-                  to="/login"
-                  className="navbar-link"
-                  onClick={handleLogout}
-                >
+                <button className="navbar-link" onClick={handleLogout}>
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
-                </Link>
+                </button>
               </li>
             </>
           ) : (

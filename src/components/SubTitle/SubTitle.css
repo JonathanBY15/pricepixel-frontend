@@ -1,5 +1,5 @@
 .subtitle {
-  font-size: 1.4rem;
+  font-size: 1.4rem; /* Default font size for larger screens */
   font-weight: 400;
   margin-bottom: 1rem;
   color: rgb(107, 114, 128);
@@ -10,4 +10,25 @@
   color: #047857;
   padding: 2px 4px;
   border-radius: 3px;
+}
+
+/* Medium screens (tablets and small laptops) */
+@media (max-width: 1024px) {
+  .subtitle {
+    font-size: 1.2rem; /* Slightly smaller font size for medium screens */
+  }
+}
+
+/* Small screens (landscape phones) */
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: 1rem; /* Reduce font size for small screens */
+  }
+}
+
+/* Extra small screens (portrait phones) */
+@media (max-width: 480px) {
+  .subtitle {
+    font-size: 0.9rem; /* Further reduce for very small screens */
+  }
 }

@@ -1,20 +1,35 @@
-/* src/components/ColoredTitle.css */
-
 .colored-title {
-  text-align: center; /* Center the title */
-  margin-top: 76px; /* Add space above the title */
+  text-align: center;
+  margin-top: 76px;
 }
 
 .gradient-text {
   margin: 0;
   padding: 0;
-  background: linear-gradient(
-    to right,
-    #0b72897c,
-    #0b7189
-  ); /* Adjust gradient colors as needed */
-  -webkit-background-clip: text; /* For Safari */
-  -webkit-text-fill-color: transparent; /* For Safari */
-  font-size: 5em; /* Adjust size as needed */
+  background: linear-gradient(to right, #0b72897c, #0b7189);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 4em; /* Default font size for larger screens */
   line-height: 100%;
+}
+
+/* Medium screens (tablets and small laptops) */
+@media (max-width: 1024px) {
+  .gradient-text {
+    font-size: 3em; /* Slightly smaller font size for medium screens */
+  }
+}
+
+/* Small screens (landscape phones) */
+@media (max-width: 768px) {
+  .gradient-text {
+    font-size: 2.5em; /* Reduce font size for small screens */
+  }
+}
+
+/* Extra small screens (portrait phones) */
+@media (max-width: 480px) {
+  .gradient-text {
+    font-size: 2em; /* Further reduce for very small screens */
+  }
 }

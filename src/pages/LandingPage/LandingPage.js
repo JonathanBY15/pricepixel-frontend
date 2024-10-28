@@ -5,6 +5,7 @@ import ColoredButton from '../../components/ColoredButton/ColoredButton';
 import LogoSlider from '../../components/LogoSlider/LogoSlider';
 import SubTitle from '../../components/SubTitle/SubTitle';
 import GameCatalog from '../../components/GameCatalog/GameCatalog'; // Import GameCatalog
+import InfoCardContainer from '../../components/InfoCardContainer/InfoCardContainer'; // Import InfoCardContainer
 import MainPage from '../MainPage/MainPage';  // Import MainPage for logged-in users
 import { storeNames, storeIcons } from '../../utils/storeData'; // Adjust the path as needed
 import axios from 'axios'; // Import axios for making API requests
@@ -59,23 +60,23 @@ const LandingPage = () => {
           <SubTitle />
           <ColoredButton text="Get Started" />
 
-          <div className="info-card-container">
-            <InfoCard
-              title="Price Comparison"
-              description="Compare prices from various stores to find the best offers."
-              icon={'/assets/piggy.png'}
-            />
-            <InfoCard
-              title="Wishlist Alerts"
-              description="Set price thresholds and get notified when your favorite games drop below."
-              icon={'/assets/alert.png'}
-            />
-            <InfoCard
-              title="Real-Time Prices"
-              description="View current prices across stores for the best deals."
-              icon={'/assets/time.png'}
-            />
-          </div>
+          <InfoCardContainer>
+          <InfoCard
+            title="Price Comparison"
+            description="Compare prices from various stores to find the best offers."
+            icon={'/assets/piggy.png'}
+          />
+          <InfoCard
+            title="Wishlist Alerts"
+            description="Set price thresholds and get notified when your favorite games drop below."
+            icon={'/assets/alert.png'}
+          />
+          <InfoCard
+            title="Real-Time Prices"
+            description="View current prices across stores for the best deals."
+            icon={'/assets/time.png'}
+          />
+        </InfoCardContainer>
 
           <LogoSlider />
 

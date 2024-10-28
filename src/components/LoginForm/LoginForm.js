@@ -19,19 +19,21 @@ const LoginForm = () => {
         },
         body: JSON.stringify({ username, password }),
       });
-
+  
       if (!response.ok) {
-        throw new Error('Login failed');
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Login failed');
       }
-
+  
       const data = await response.json();
-      // Store the token in local storage (or handle it however you prefer)
+      // Store the token in local storage
       localStorage.setItem('token', data.token);
       navigate('/'); // Redirect to home or any other page
     } catch (error) {
       setError(error.message);
     }
   };
+  
 
   return (
     <div className="login-form-container">
