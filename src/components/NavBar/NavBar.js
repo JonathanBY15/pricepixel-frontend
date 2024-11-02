@@ -11,7 +11,7 @@ const NavBar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    navigate('/login');
+    // navigate('/login');
   };
 
   const handleNavigateAndScroll = (event, targetPath) => {
@@ -61,6 +61,7 @@ const NavBar = () => {
                 <Link
                   className="navbar-link"
                   onClick={handleLogout}
+                  to="/login"
                 >
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
                 </Link>
