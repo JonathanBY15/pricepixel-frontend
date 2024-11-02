@@ -1,76 +1,168 @@
-![Alt text](ss.png)
+<a id="readme-top"></a>
 
-# Getting Started with Create React App
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://www.pricepixel.xyz/">
+    <img src="static\price-pixel-logo-tp.png" alt="Logo" width="480" height="120">
+  </a>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+  <p align="center" style="font-size: 24px">
+    A web app for finding the best PC game deals.
+    <br />
+    <a href="https://www.pricepixel.xyz/">View Deployed App</a>
+    <br />
+    <br />
+  </p>
+</div>
 
-## Available Scripts
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#database-schema">Database Schema</a>
+    </li>
+    <li>
+      <a href="#getting-started">Getting Started</a>
+    </li>
+  </ol>
+</details>
 
-In the project directory, you can run:
+<!-- ABOUT THE PROJECT -->
 
-### `npm start`
+# About The Project
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+PricePixel is a web application that enables users to track the prices of their favorite PC games across multiple online stores. Users can add games to their wishlist, set price alerts, and receive notifications when the prices drop below their specified thresholds. The app utilizes the CheapShark API for real-time price data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Landing Page
 
-### `npm test`
+<img src="/static/landing.gif" height="505" width="900" alt="landing-page"/>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Usage
 
-### `npm run build`
+Users can search for games to find their prices on different stores. Users can also set a price alert to be notified by email when their favorite games go on sale.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="/static/set-alert1.gif" height="500" width="889" alt="usage"/>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Features:
 
-### `npm run eject`
+- **Game Price Tracking:**
+  - Search for PC games and view prices from various online stores.
+  - Add games to a personalized wishlist.
+- **Price Alerts:**
+  - Set price thresholds to receive notifications when prices drop.
+  - Easily manage alerts and view past alerts.
+- **User Authentication:**
+  - Secure user registration and login.
+  - Each user has a unique wishlist.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built With
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<div align="left">
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" height="40" alt="react logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" height="40" alt="nodejs logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" height="40" alt="express logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg" height="40" alt="postgresql logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" height="40" alt="javascript logo" />
+    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original.svg" height="40" alt="sequelize logo" />
+</div>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+The app uses PostgreSQL, NodeJS, and React. The database, backend, and fronted are all deployed on Render.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+# Database Schema
 
-## Learn More
+The database consists of three main entities: **User**, **Wishlist**, and **WishlistItem**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Entities
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**User**: Represents a user in the application. Each user has a unique identifier (`uid`), a username, and a hashed password for authentication. Each user has a wishlist which is created on signup.
 
-### Code Splitting
+**Wishlist**: Represents a user's wishlist. Each wishlist is associated with one user through the `uid` field. This table allows for tracking which items belong to which user.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+**WishlistItem**: Represents an individual item(game) in a user's wishlist. Each wishlist item has a unique identifier (`item_id`), a `game_id` representing the specific game, and an `alert_price` which indicates the price threshold for email notifications. Each wishlist item is associated with a specific wishlist.
 
-### Analyzing the Bundle Size
+## Relationships
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- Each **User** has one **Wishlist**.
+- A **Wishlist** can contain multiple **WishlistItems**.
+- Each **WishlistItem** is linked to one **Wishlist**, and can include a specific game by referencing the `game_id`.
 
-### Making a Progressive Web App
+<img src="/static/db-schema.png"  width="900" alt="landing-page"/>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Advanced Configuration
+<!-- GETTING STARTED -->
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+# Getting Started
 
-### Deployment
+Follow these steps to set up and run PricePixel on your local machine.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Prerequisites
 
-### `npm run build` fails to minify
+- <a href="https://nodejs.org/en/download/">Node.js</a>
+- <a href="https://www.postgresql.org/download/">PostgreSQL</a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Setup - Backend
 
+1. Set up the PostgreSQL database.
+   ```sh
+   psql -U <your_PostgreSQL_username>
+   createdb price_pixel
+   ```
+2. Clone the repository.
+   ```sh
+   git clone https://github.com/JonathanBY15/pricepixel-backend
+   ```
+3. Install dependencies.
+   ```sh
+   npm install
+   ```
+4. Create a .env file in the backend directory with the following content:
+
+   ```sh
+   DB_NAME=your_database_name
+   DB_USER=your_database_user
+   DB_PASSWORD=your_database_password
+   DB_HOST=your_database_host
+   DB_PORT=your_database_port
+   ```
+
+5. Run the backend server.
+   ```sh
+   npm start
+   ```
+
+## Setup - Frontend
+
+1. Clone the repository.
+   ```sh
+   git clone https://github.com/JonathanBY15/pricepixel-frontend
+   ```
+2. Install dependencies.
+   ```sh
+   npm install
+   ```
+3. Run the frontend.
+   ```sh
+   npm start
+   ```
+
+### Access The Application
+
+Once the PostgreSQL database and the Flask server is created, open your web browser and go to:
+
+```arduino
+http://localhost:3000
 ```
 
-```
+You should now see the PricePixel application running.
