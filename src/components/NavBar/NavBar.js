@@ -58,7 +58,7 @@ const NavBar = () => {
                 </Link>
               </li>
               <li>
-                <button className="navbar-link" onClick={handleLogout}>
+                <button className="navbar-link logout-nav" onClick={handleLogout}>
                   <i className="fa-solid fa-right-from-bracket"></i> Log Out
                 </button>
               </li>
