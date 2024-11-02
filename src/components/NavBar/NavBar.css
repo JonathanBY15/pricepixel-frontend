@@ -50,23 +50,6 @@
   color: white;
 }
 
-.logout-nav {
-  color: #0b7189;
-  text-decoration: none;
-  padding: 5px 10px;
-  border-radius: 5px;
-  transition: 0.2s;
-}
-
-.logout-nav:hover {
-  background-color: #0b72892c;
-}
-
-.logout-nav.active {
-  background-color: #0b7189;
-  color: white;
-}
-
 /* Mobile styles */
 .menu-toggle {
   display: none;
